@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../store/ducks/users';
 
-const Home = () => {
-  const initialQuery = window.location.search.split('=')[1];
+const Home = ({ location }) => {
+  const initialQuery = location.search.split('=')[1];
 
   const [query, setQuery] = useState(initialQuery || '');
   const [queryInput, setQueryInput] = useState(initialQuery || '');
@@ -17,7 +17,9 @@ const Home = () => {
 
   useEffect(() => {
     if (query) {
-      history.push(`/?q=${query}`);
+      history.push({
+        search: `q=${query}`,
+      });
       dispatch(getUsers({ query }));
     }
   }, [query, history, dispatch]);
