@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../store/ducks/users';
@@ -39,14 +39,14 @@ const Search = ({ location }) => {
       </form>
       <div>
         {users.map(user => (
-          <div key={user.id} style={{ marginTop: '30px' }}>
+          <Link to={`/users/${user.login}`} key={user.id} style={{ marginTop: '30px' }}>
             <img
               src={user.avatar_url}
               alt={user.login}
               style={{ width: '100%', maxWidth: '200px', height: 'auto' }}
             />
             <p>{user.login}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
