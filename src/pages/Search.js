@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../store/ducks/users';
 
-const Home = ({ location }) => {
+const Search = ({ location }) => {
   const initialQuery = location.search.split('=')[1];
 
   const [query, setQuery] = useState(initialQuery || '');
@@ -53,4 +53,4 @@ const Home = ({ location }) => {
   );
 };
 
-export default Home;
+export default Search;

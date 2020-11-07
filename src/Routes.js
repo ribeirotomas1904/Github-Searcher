@@ -5,7 +5,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Home } from './pages';
+import { Search } from './pages';
 
 const Routes = () => {
   return (
@@ -14,7 +14,7 @@ const Routes = () => {
         <Route exact path="/">
           <Redirect to="/search" />
         </Route>
-        <Route exact path="/search" component={Home} />
+        <Route exact path="/search" component={Search} />
       </Switch>
     </Router>
   );
