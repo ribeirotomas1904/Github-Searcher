@@ -1,8 +1,14 @@
 import { Card, Avatar, UserInfo } from './';
 
-const UserCard = ({ user, type }) => {
+const UserCard = ({ user, type, style }) => {
   return (
-    <Card style={{ maxWidth: type === 'min' ? '150px' : '300px' }}>
+    <Card
+      style={{
+        maxWidth: type === 'min' ? '150px' : '300px',
+        padding: type === 'min' ? '10px' : '20px',
+        ...style,
+      }}
+    >
       <Avatar
         src={user.avatar_url}
         alt={user.login}

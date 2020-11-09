@@ -4,11 +4,21 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from "../store/ducks/user";
 
+import styled from 'styled-components';
+
+import {
+  Navbar,
+  PageWrapper,
+  UserCard,
+  ReposCardContainer,
+} from '../components';
+
+import { pageWidthDelimiter } from "../constants/styles";
+
 const UserDetails = () => {
   const { username } = useParams();
   const {
     user,
-    repos,
     isLoading,
     error,
   } = useSelector(state => state.user);
@@ -26,25 +36,27 @@ const UserDetails = () => {
   }
 
   return (
-    <div>
-      <div>
-        <img
-          src={user.avatar_url}
-          alt={user.login}
-          style={{ width: '100%', maxWidth: '200px', height: 'auto' }}
-        />
-        <p>{user.login}</p>
-      </div>
-      <div>
-        {repos.map(repo => (
-          <div key={repo.id} style={{ marginTop: '20px' }}>
-            <p>{repo.name}</p>
-            <p>{repo.stargazers_count}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+      <Navbar />
+      <PageWrapper>
+        <Container>
+          <UserCard user={user} />
+          <ReposCardContainer />
+        </Container>
+      </PageWrapper>
+    </>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: ${pageWidthDelimiter};
+
+  & > *:not(:last-child) {
+    margin-right: 20px;
+  }
+`;
 
 export default UserDetails;

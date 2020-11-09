@@ -9,13 +9,19 @@ const UsersCardContainer = () => {
   return (
     <Container>
       {users.map(user => (
-        <UserCard key={user.id} user={user} type="min" />
+        <UserCard
+          key={user.id}
+          user={user}
+          type="min"
+          style={{ margin: '10px' }}
+        />
       ))}
     </Container>
   );
 };
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

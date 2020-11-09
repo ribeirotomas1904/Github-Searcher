@@ -1,15 +1,17 @@
+import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
-import { GoOctoface } from 'react-icons/go';
 import { pageWidthDelimiter } from '../constants/styles';
+
+import { Logo } from '../components';
 
 const Navbar = () => {
   return (
     <NavWrapper>
       <Nav>
-        <Logo>
-          <GoOctoface size="2rem" />
-          <h1 className="LogoText">Github Searcher</h1>
-        </Logo>
+        <Link to="/">
+          <Logo />
+        </Link>
       </Nav>
     </NavWrapper>
   );
@@ -31,14 +33,10 @@ const Nav = styled.nav`
   padding: 20px 0;
 
   color: white;
-`;
 
-const Logo = styled.div`
-  display: flex;
-  align-items: center;
-
-  & > *:not(:last-child) {
-    margin-right: 10px;
+  & > a {
+    text-decoration: none;
+    color: white;
   }
 `;
 
