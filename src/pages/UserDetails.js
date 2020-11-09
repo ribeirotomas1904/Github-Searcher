@@ -21,7 +21,6 @@ const UserDetails = () => {
   const {
     user,
     isLoading,
-    error,
   } = useSelector(state => state.user);
 
   const dispatch = useDispatch();
@@ -31,9 +30,7 @@ const UserDetails = () => {
   }, [username, dispatch]);
 
   if (isLoading) {
-    return (
-      <PageLoader />
-    );
+    return <PageLoader />;
   }
 
   return (
