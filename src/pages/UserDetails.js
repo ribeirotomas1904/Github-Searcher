@@ -55,6 +55,16 @@ const Container = styled.div`
   & > *:not(:last-child) {
     margin-right: 20px;
   }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+
+    & > *:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 export default UserDetails;

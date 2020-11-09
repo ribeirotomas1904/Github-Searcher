@@ -4,7 +4,7 @@ import { GoOctoface } from 'react-icons/go';
 const Logo = () => {
   return (
     <Container>
-      <GoOctoface size="2rem" />
+      <GoOctoface size="2rem" style={{ flexShrink: '0' }} />
       <h1 className="LogoText">Github Searcher</h1>
     </Container>
   );

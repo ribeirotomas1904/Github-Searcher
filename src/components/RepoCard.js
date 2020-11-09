@@ -52,6 +52,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow-wrap: break-word;
 
   & > *:not(:last-child) {
     margin-bottom: 10px;
@@ -84,8 +85,9 @@ const RepoName = styled.a`
 
 `;
 
-const RepoNameWrapper = styled.a`
+const RepoNameWrapper = styled.p`
   display: flex;
+  overflow-wrap: anywhere;
 
   & > *:not(:last-child) {
     margin-right: 5px;
