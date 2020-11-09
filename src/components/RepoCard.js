@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Card } from './';
 import { GoRepoForked, GoStar, GoLaw } from 'react-icons/go';
-import { FaCode } from 'react-icons/fa';
+import { FaCode, FaRegClock } from 'react-icons/fa';
 
 import { formatDateDistanceToNow } from '../helpers/formatters';
 
@@ -38,8 +38,10 @@ const RepoCard = ({ repo }) => {
           {repo.license?.name && (
             <p><GoLaw /> <span>{repo.license?.name}</span></p>
           )}
-          <p>{`Created ${formatDateDistanceToNow(repo.created_at)}`}</p>
-          <p>{`Updated ${formatDateDistanceToNow(repo.updated_at)}`}</p>
+          <p>
+            <FaRegClock />
+            <span>{`Updated ${formatDateDistanceToNow(repo.updated_at)}`}</span>
+          </p>
         </IconsContainer>
       </Container>
     </Card>
@@ -59,19 +61,22 @@ const Container = styled.div`
 const IconsContainer = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   & > * {
     display: flex;
     align-items: center;
+    line-height: 1.5;
 
-  }
-
-  & > * > *:not(:last-child) {
-    margin-right: 2px;
   }
 
   & > *:not(:last-child) {
     margin-right: 15px;
+  }
+
+  & > * > *:not(:last-child) {
+    margin-right: 3px;
+    flex-shrink: 0;
   }
 `;
 
