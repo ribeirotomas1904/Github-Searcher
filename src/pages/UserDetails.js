@@ -11,6 +11,7 @@ import {
   PageWrapper,
   UserCard,
   ReposCardContainer,
+  PageLoader,
 } from '../components';
 
 import { pageWidthDelimiter } from "../constants/styles";
@@ -31,7 +32,7 @@ const UserDetails = () => {
 
   if (isLoading) {
     return (
-      <h1>Carregando...</h1>
+      <PageLoader />
     );
   }
 

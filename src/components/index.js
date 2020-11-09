@@ -9,3 +9,4 @@ export { default as UserInfo } from './UserInfo';
 export { default as Logo } from './Logo';
 export { default as ReposCardContainer } from './ReposCardContainer';
 export { default as RepoCard } from './RepoCard';
+export { default as PageLoader } from './PageLoader';
