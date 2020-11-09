@@ -9,7 +9,7 @@ const UsersCardContainer = () => {
   return (
     <Container>
       {users.map(user => (
-        <UserCard key={user.id} user={user} />
+        <UserCard key={user.id} user={user} type="min" />
       ))}
     </Container>
   );
@@ -19,6 +19,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
 `;
 
 export default UsersCardContainer;

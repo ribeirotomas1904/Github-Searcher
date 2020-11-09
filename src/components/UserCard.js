@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Card, Avatar, UserInfo } from './';
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, type }) => {
   return (
-    <Link to={`/users/${user.login}`} style={{ margin: '10px' }}>
-      <img
+    <Card style={{ maxWidth: type === 'min' ? '150px' : '300px' }}>
+      <Avatar
         src={user.avatar_url}
         alt={user.login}
-        style={{ width: '200px', height: 'auto' }}
+        size={type === 'min' ? 'md' : 'lg'}
+        style={{ marginBottom: '10px' }}
       />
-      <p>{user.login}</p>
-    </Link>
+      <UserInfo user={user} type={type} />
+    </Card>
   );
 };
 

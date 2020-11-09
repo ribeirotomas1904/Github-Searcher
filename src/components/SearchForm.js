@@ -33,15 +33,20 @@ const SearchForm = ({ location, ...rest }) => {
         e.preventDefault();
         setQuery(queryInput);
       }}
-      disabled={isLoading}
       {...rest}
     >
       <input
         type="text"
         value={queryInput}
         onChange={e => setQueryInput(e.target.value)}
+        autoFocus
       />
-      <button>Search</button>
+      <button
+        type="submit"
+        disabled={isLoading}
+      >
+        Search
+      </button>
     </Form>
   );
 };
