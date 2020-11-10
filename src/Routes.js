@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
+  withRouter,
 } from "react-router-dom";
 
 import { Search, UserDetails } from './pages';
@@ -10,6 +12,7 @@ import { Search, UserDetails } from './pages';
 const Routes = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Switch>
         <Route exact path="/">
           <Redirect to="/search" />
@@ -20,5 +23,13 @@ const Routes = () => {
     </Router>
   );
 };
+
+const ScrollToTop = withRouter(({ location }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return null;
+});
 
 export default Routes;
