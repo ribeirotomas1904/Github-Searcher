@@ -20,15 +20,12 @@ const reducer = (state = initialState, action) => {
       };
     case GET_USERS_SUCCESS:
       return {
-        ...state,
+        ...initialState,
         users: action.users,
-        isLoading: false,
-        error: null,
       };
     case GET_USERS_FAILURE:
       return {
-        ...state,
-        isLoading: false,
+        ...initialState,
         error: action.error,
       };
     default:
@@ -61,9 +58,18 @@ export const getUsers = ({ query }) => {
     dispatch(getUsersStarted());
     try {
       const { data } = await api.getUsers({ query });
-      dispatch(getUsersSuccess(data.items));
+
+      if (data.total_count === 0) {
+        throw new Error(`No results found for: "${query}"`);
+      } else {
+        dispatch(getUsersSuccess(data.items));
+      }
     } catch (error) {
-      dispatch(getUsersFailure(error.response.data.message));
+      if (!error.response) {
+        dispatch(getUsersFailure(error.message));
+      } else {
+        dispatch(getUsersFailure(error.response.data.message));
+      }
     }
   };
 };

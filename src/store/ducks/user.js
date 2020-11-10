@@ -21,16 +21,13 @@ const reducer = (state = initialState, action) => {
       };
     case GET_USER_SUCCESS:
       return {
-        ...state,
+        ...initialState,
         user: action.user,
         repos: action.repos,
-        isLoading: false,
-        error: null,
       };
     case GET_USER_FAILURE:
       return {
-        ...state,
-        isLoading: false,
+        ...initialState,
         error: action.error,
       };
     default:
@@ -66,7 +63,11 @@ export const getUser = ({ username }) => {
       const [{ data: user }, { data: repos }] = await api.getUser({ username });
       dispatch(getUserSuccess(user, repos));
     } catch (error) {
-      dispatch(getUserFailure(error.response.data.message));
+      if (!error.response) {
+        dispatch(getUserFailure(error.message));
+      } else {
+        dispatch(getUserFailure(error.response.data.message));
+      }
     }
   };
 };

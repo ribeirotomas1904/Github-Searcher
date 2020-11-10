@@ -1,6 +1,10 @@
 import { Card, Avatar, UserInfo } from './';
 
 const UserCard = ({ user, type, style }) => {
+  if (JSON.stringify(user) === JSON.stringify({})) {
+    return null;
+  }
+
   return (
     <Card
       style={{
