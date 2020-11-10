@@ -10,13 +10,13 @@ const RepoCard = ({ repo }) => {
     <Card style={{ padding: '20px' }}>
       <Container>
         <RepoNameWrapper>
-          <RepoName
+          <a
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
           >
             {repo.name}
-          </RepoName>
+          </a>
 
           <span>{repo.fork && '(Forked)'}</span>  
         </RepoNameWrapper>
@@ -54,6 +54,14 @@ const Container = styled.div`
   flex-direction: column;
   overflow-wrap: break-word;
 
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   & > *:not(:last-child) {
     margin-bottom: 10px;
   }
@@ -81,10 +89,6 @@ const IconsContainer = styled.div`
   }
 `;
 
-const RepoName = styled.a`
-
-`;
-
 const RepoNameWrapper = styled.p`
   display: flex;
   overflow-wrap: anywhere;
@@ -94,7 +98,7 @@ const RepoNameWrapper = styled.p`
   }
 `;
 
-const RepoDescription = styled.a`
+const RepoDescription = styled.p`
   color: #586069;
 `;
 
