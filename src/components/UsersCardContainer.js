@@ -9,18 +9,20 @@ const UsersCardContainer = () => {
 
   return (
     <Container>
-      {users.map(user => {
-        return isLoading ? (
-          <UserCardSkeleton key={user.id} />
-        ) : (
+      {!isLoading ? (
+        users.map(user => (
           <UserCard
             key={user.id}
             user={user}
             type="min"
             style={{ margin: '10px' }}
           />
-        );
-      })}
+        ))
+      ) : (
+        new Array(30).fill(null).map((_, index) => (
+          <UserCardSkeleton key={index} />
+        ))
+      )}
     </Container>
   );
 };
