@@ -1,11 +1,15 @@
 import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
-import { UserCard } from './'
+import { UserCard, ErrorMessage } from './'
 import ContentLoader from 'react-content-loader';
 
 const UsersCardContainer = () => {
-  const { users, isLoading } = useSelector(state => state.users);
+  const { users, isLoading, error } = useSelector(state => state.users);
+
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
 
   return (
     <Container>

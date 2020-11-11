@@ -12,6 +12,7 @@ import {
   UserCard,
   ReposCardContainer,
   PageLoader,
+  ErrorMessage,
 } from '../components';
 
 import { pageWidthDelimiter } from "../constants/styles";
@@ -21,6 +22,7 @@ const UserDetails = () => {
   const {
     user,
     isLoading,
+    error,
   } = useSelector(state => state.user);
 
   const dispatch = useDispatch();
@@ -38,8 +40,14 @@ const UserDetails = () => {
       <Navbar />
       <PageWrapper>
         <Container>
-          <UserCard user={user} />
-          <ReposCardContainer />
+          {error ? (
+            <ErrorMessage error={error} />
+          ) : (
+            <>
+              <UserCard user={user} />
+              <ReposCardContainer />
+            </>
+          )}
         </Container>
       </PageWrapper>
     </>
