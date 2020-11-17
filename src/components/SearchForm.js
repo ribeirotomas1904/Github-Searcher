@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory, withRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsers } from '../store/ducks/users';
+import { getUsers } from '../store/slices/users';
 
 import styled from 'styled-components';
 import { pageWidthDelimiter } from "../constants/styles";

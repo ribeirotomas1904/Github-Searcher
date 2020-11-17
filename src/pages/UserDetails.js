@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from "../store/ducks/user";
+import { getUser } from "../store/slices/user";
+// import { getUser } from "../store/ducks/user";
 
 import styled from 'styled-components';
 
