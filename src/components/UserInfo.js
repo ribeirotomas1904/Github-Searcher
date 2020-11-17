@@ -42,7 +42,9 @@ const UserInfo = ({ user, type }) => {
           {user.blog && (
             <p>
               <FaLink /> <a
-                href={user.blog}
+                href={
+                  user.blog.includes('http') ? user.blog : `http://${user.blog}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
               >
